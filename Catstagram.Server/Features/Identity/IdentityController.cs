@@ -1,28 +1,28 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Catstagram.Server.Data.Models;
 using Catstagram.Server.Models.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
-namespace Catstagram.Server.Controllers
+namespace Catstagram.Server.Features.Identity
 {
     public class IdentityController : ApiController
     {
         private readonly UserManager<User> _userManager;
+        private readonly IIdentityService _identityService;
         private readonly ApplicationSettings _applicationSettings;
+        
 
-        public IdentityController(UserManager<User> userManager, IOptions<ApplicationSettings> applicationSettings)
+        public IdentityController(UserManager<User> userManager, IOptions<ApplicationSettings> applicationSettings, IIdentityService identityService)
         {
             this._userManager = userManager;
+            this._identityService = identityService;
             this._applicationSettings = applicationSettings.Value;
         }
 
+
+        [HttpPost]
         [Route(nameof(Register))]
         public async Task<ActionResult> Register(RegisterUserRequestViewModel model)
         {
@@ -42,6 +42,7 @@ namespace Catstagram.Server.Controllers
             return BadRequest(result.Errors);
         }
 
+        [HttpPost]
         [Route(nameof(Login))]
         public async Task<ActionResult<object>> Login(LoginRequestModel model)
         {
@@ -60,26 +61,10 @@ namespace Catstagram.Server.Controllers
                 return Unauthorized();
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(this._applicationSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id),
-                    new Claim(ClaimTypes.Name, user.UserName)
+            var token = this._identityService
+                .GenerateJwtToken(user, this._applicationSettings);
 
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var encryptedToken = tokenHandler.WriteToken(token);
-
-            return new
-            {
-                Token = encryptedToken
-            };
+            return new LoginResponseModel(token);
         }
     }
 }

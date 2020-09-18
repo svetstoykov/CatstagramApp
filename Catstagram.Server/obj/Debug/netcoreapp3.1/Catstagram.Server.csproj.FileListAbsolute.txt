@@ -145,9 +145,6 @@ C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catsta
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.csprojAssemblyReference.cache
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.AssemblyInfoInputs.cache
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.AssemblyInfo.cs
-C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.csproj.CoreCompileInputs.cache
-C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.RazorTargetAssemblyInfo.cache
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.csproj.CopyComplete
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\staticwebassets\Catstagram.Server.StaticWebAssets.Manifest.cache
@@ -155,3 +152,11 @@ C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catsta
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.dll
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.pdb
 C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.genruntimeconfig.cache
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\bin\Debug\netcoreapp3.1\libman.json
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.csproj.CoreCompileInputs.cache
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\deucy\Desktop\c#_workingFolder\c#_Projects\MyTestedCatstagramApp\Catstagram.Server\obj\Debug\netcoreapp3.1\Catstagram.Server.MvcApplicationPartsAssemblyInfo.cache
