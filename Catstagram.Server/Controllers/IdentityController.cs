@@ -20,7 +20,7 @@ namespace Catstagram.Server.Controllers
         public IdentityController(UserManager<User> userManager, IOptions<ApplicationSettings> applicationSettings)
         {
             this._userManager = userManager;
-             this._applicationSettings = applicationSettings.Value;
+            this._applicationSettings = applicationSettings.Value;
         }
 
         [Route(nameof(Register))]
@@ -66,7 +66,9 @@ namespace Catstagram.Server.Controllers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
+                    new Claim(ClaimTypes.Name, user.UserName)
+
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

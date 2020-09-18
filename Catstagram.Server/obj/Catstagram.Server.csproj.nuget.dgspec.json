@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\Catstagram.Server\\Catstagram.Server.csproj": {}
+    "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\MyTestedCatstagramApp\\Catstagram.Server\\Catstagram.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\Catstagram.Server\\Catstagram.Server.csproj": {
+    "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\MyTestedCatstagramApp\\Catstagram.Server\\Catstagram.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\Catstagram.Server\\Catstagram.Server.csproj",
+        "projectUniqueName": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\MyTestedCatstagramApp\\Catstagram.Server\\Catstagram.Server.csproj",
         "projectName": "Catstagram.Server",
-        "projectPath": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\Catstagram.Server\\Catstagram.Server.csproj",
+        "projectPath": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\MyTestedCatstagramApp\\Catstagram.Server\\Catstagram.Server.csproj",
         "packagesPath": "C:\\Users\\deucy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\Catstagram.Server\\obj\\",
+        "outputPath": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\MyTestedCatstagramApp\\Catstagram.Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\deucy\\AppData\\Roaming\\NuGet\\NuGet.Config",

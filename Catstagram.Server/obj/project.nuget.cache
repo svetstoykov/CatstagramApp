@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XeGxwirkH4jM1E6dMkxK8fJNj4+ET4zGh/QWkGtRUm7QezhVKqU5cGdZ1pNqyjLdE/6gBGUZyuwYRX6yC0u8vw==",
+  "dgSpecHash": "4iImRC9kLNLtq8OcX5/5w6pHwBQJTXD/z//Nrn2+/4wqGxfM5f3lRQBmM+399lN9JN99g+br8d8z4IQTQgMw6A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\Catstagram.Server\\Catstagram.Server.csproj",
+  "projectFilePath": "C:\\Users\\deucy\\Desktop\\c#_workingFolder\\c#_Projects\\MyTestedCatstagramApp\\Catstagram.Server\\Catstagram.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\deucy\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\deucy\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",
