@@ -81,6 +81,13 @@ namespace Catstagram.Server.Infrastructure.Extensions
             return appSettingsConfig.Get<ApplicationSettings>();
         }
 
+        public static IMvcBuilder AddNewtonsoftJsonService(this IMvcBuilder services)
+        {
+            return services.AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+        }
+
         public static IServiceCollection AddSwagger(this IServiceCollection services)
         {
             return services.AddSwaggerGen(c =>

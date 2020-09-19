@@ -28,9 +28,7 @@ namespace Catstagram.Server
                 .AddApplicationServices()
                 .AddSwagger()
                 .AddControllers()
-                .AddNewtonsoftJson(options =>
-                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                );
+                .AddNewtonsoftJsonService();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
