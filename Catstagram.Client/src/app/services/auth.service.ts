@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {environment} from "../../environments/environment"
+import { environment } from "../../environments/environment"
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,13 @@ export class AuthService {
   }
 
   getToken(){
-    localStorage.getItem("token");
+    return localStorage.getItem("token");
+  }
+
+  isAuthenticated(){
+    if(this.getToken()){
+      return true
+    }
+    return false;
   }
 }
