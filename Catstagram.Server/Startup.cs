@@ -1,5 +1,5 @@
 using Catstagram.Server.Infrastructure.Extensions;
-
+using Catstagram.Server.Infrastructure.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +27,7 @@ namespace Catstagram.Server
                 .AddJwtAuthentication(services.GetAppSettings(this.Configuration))
                 .AddApplicationServices()
                 .AddSwagger()
-                .AddControllers()
+                .AddApiControllers()
                 .AddNewtonsoftJsonService();
         }
 

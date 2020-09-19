@@ -1,6 +1,6 @@
-﻿namespace Catstagram.Server.Features.Cats
+﻿namespace Catstagram.Server.Features.Cats.Models
 {
-    public class CatListResponseModel
+    public class CatListServiceModel
     {
         public int Id { get; set; }
 

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Catstagram.Server.Data;
 using Catstagram.Server.Data.Models;
+using Catstagram.Server.Features.Cats.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -37,11 +38,11 @@ namespace Catstagram.Server.Features.Cats
         }
 
 
-        public async Task<IEnumerable<CatListResponseModel>> ByUser(string userId)
+        public async Task<IEnumerable<CatListServiceModel>> ByUser(string userId)
         {
             var catsForUser = await this._dbContext.Cats
                 .Where(c => c.UserId == userId)
-                .Select(c => new CatListResponseModel
+                .Select(c => new CatListServiceModel
                 {
                     Id = c.Id,
                     ImageUrl = c.ImageUrl
@@ -49,6 +50,23 @@ namespace Catstagram.Server.Features.Cats
                 .ToListAsync();
 
             return catsForUser;
+        }
+
+        public async Task<CatDetailsServiceModel> GetDetails(int catId)
+        {
+            var cat = await this._dbContext.Cats
+                .Where(c => c.Id == catId)
+                .Select(c => new CatDetailsServiceModel
+                {
+                    Description = c.Description,
+                    Id = c.Id,
+                    ImageUrl = c.ImageUrl,
+                    UserId = c.UserId,
+                    Username = c.User.UserName
+                })
+                .FirstOrDefaultAsync();
+
+            return cat;
         }
     }
 }

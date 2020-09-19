@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Catstagram.Server.Data.Models;
-using Catstagram.Server.Models.Identity;
+using Catstagram.Server.Features.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -24,7 +24,7 @@ namespace Catstagram.Server.Features.Identity
 
         [HttpPost]
         [Route(nameof(Register))]
-        public async Task<ActionResult> Register(RegisterUserRequestViewModel model)
+        public async Task<ActionResult> Register(RegisterRequestModel model)
         {
             var user = new User()
             {

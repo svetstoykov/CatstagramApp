@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Catstagram.Server.Features.Cats
+using static Catstagram.Server.Data.ValidationConstants.Cat;
+
+namespace Catstagram.Server.Features.Cats.Models
 {
-    using static Data.ValidationConstants.Cat;
     public class CreateCatRequestModel
     {
         [Required]
