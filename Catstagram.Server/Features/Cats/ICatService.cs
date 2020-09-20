@@ -8,6 +8,10 @@ namespace Catstagram.Server.Features.Cats
     {
         public Task<int> Create(CreateCatRequestModel model, string userId);
 
+        public Task<bool> Update(UpdateCatRequestModel model, string userId);
+
+        public Task<bool> Delete(int catId, string userId);
+
         public Task<IEnumerable<CatListServiceModel>> ByUser(string userId);
 
         public Task<CatDetailsServiceModel> GetDetails(int catId);

@@ -38,6 +38,38 @@ namespace Catstagram.Server.Features.Cats
         }
 
 
+        public async Task<bool> Delete(int catId, string userId)
+        {
+            var cat = await this.GetCatByIdAndUserId(catId, userId);
+
+            if (cat == null)
+            {
+                return false;
+            }
+
+            this._dbContext.Cats.Remove(cat);
+
+            await this._dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> Update(UpdateCatRequestModel model, string userId)
+        {
+            var cat = await this.GetCatByIdAndUserId(model.Id, userId);
+
+            if (cat == null)
+            {
+                return false;
+            }
+
+            cat.Description = model.Description;
+
+            await this._dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<IEnumerable<CatListServiceModel>> ByUser(string userId)
         {
             var catsForUser = await this._dbContext.Cats
@@ -68,5 +100,10 @@ namespace Catstagram.Server.Features.Cats
 
             return cat;
         }
+
+        private async Task<Cat> GetCatByIdAndUserId(int catId, string userId)
+         => await this._dbContext.Cats
+             .Where(c => c.Id == catId && c.UserId == userId)
+             .FirstOrDefaultAsync();
     }
 }
