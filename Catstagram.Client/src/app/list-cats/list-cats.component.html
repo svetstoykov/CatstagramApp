@@ -3,9 +3,9 @@
         <div class="col-lg-4" *ngFor="let cat of cats ">
             <div class="card" style="width: 18rem; margin-top: 20%;"> 
                 <img class="card-img" [src]="cat.imageUrl" alt="Card image cap">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">{{cat.id}}</h5>
-                    <a href="#" class="btn btn-primary">Details</a>
+                    <a (click)="routeToCat(cat.id)" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div>

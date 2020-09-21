@@ -5,7 +5,7 @@ import { CatService } from '../services/cat.service';
 @Component({
   selector: 'app-createpost',
   templateUrl: './createpost.component.html',
-  styleUrls: ['./createpost.component.css']
+  styleUrls: ['../../styles/formstyle.css']
 })
 export class CreatepostComponent implements OnInit {
 

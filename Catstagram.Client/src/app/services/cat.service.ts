@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { Cat } from '../models/Cat';
 import { AuthService } from './auth.service';
+import { CatDetails } from '../models/CatDetails';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class CatService {
 
   getCats(): Observable<Array<Cat>> {
     return this.http.get<Array<Cat>>(this.catPath);
+  }
+
+  getCatById(id): Observable<CatDetails> {
+    return this.http.get<CatDetails>(`${this.catPath}/${id}`);
   }
 }
