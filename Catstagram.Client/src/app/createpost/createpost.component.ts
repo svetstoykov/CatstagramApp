@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CatService } from '../services/cat.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CreatepostComponent implements OnInit {
 
   catForm: FormGroup
 
-  constructor(private fb: FormBuilder, private catService: CatService) {
+  constructor(private fb: FormBuilder, private catService: CatService, private router: Router) {
     this.catForm = this.fb.group({
       "imageUrl": ["", Validators.required],
       "description": [""]
@@ -29,8 +30,9 @@ export class CreatepostComponent implements OnInit {
     this.catService
       .create(this.catForm.value)
       .subscribe(data => {
-        console.log(data);
+        this.router.navigate(["cats"])
       })
+
   }
 
 }

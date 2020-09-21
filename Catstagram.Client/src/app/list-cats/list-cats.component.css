@@ -1,0 +1,10 @@
+img:hover{
+    border-color: lightskyblue;
+    border-width: 3px;
+    border-radius: 8px;
+}
+
+h1{
+    font-size: 30px;
+    font-style: italic;
+}

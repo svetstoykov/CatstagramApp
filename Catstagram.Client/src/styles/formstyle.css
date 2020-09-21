@@ -14,8 +14,11 @@
     padding: 2rem;
   }
   
-  .form-signin {
+  label{
     font-style: italic;
+  }
+  
+  .form-signin {
     width: 100%;
   }
   

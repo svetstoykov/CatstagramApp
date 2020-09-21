@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CatDetails } from '../models/CatDetails';
 import { CatService } from '../services/cat.service';
 
@@ -12,7 +12,7 @@ export class CatDetailsComponent implements OnInit {
   cat: CatDetails;
   catId: string;
 
-  constructor(private catService: CatService, private route: ActivatedRoute) {
+  constructor(private catService: CatService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe((url) => {
       this.catId = url['id'];
     });
@@ -22,5 +22,12 @@ export class CatDetailsComponent implements OnInit {
     this.catService.getCatById(this.catId).subscribe((catData) => {
       this.cat = catData;
     });
+  }
+
+  deleteCat(){
+    this.catService.deleteCatById(this.catId).subscribe(res => {
+      this.router.navigate(["cats"]);
+    });
+    
   }
 }

@@ -15,6 +15,10 @@ export class ListCatsComponent implements OnInit {
   constructor(private catService: CatService, private rounter: Router) { }
 
   ngOnInit(): void {
+    this.getAllUserCats();
+  }
+
+  getAllUserCats(){
     this.catService.getCats().subscribe(cats => {
       this.cats = cats;
     })
@@ -23,5 +27,4 @@ export class ListCatsComponent implements OnInit {
   routeToCat(id){
     this.rounter.navigate(["cats", id])
   }
-
 }
