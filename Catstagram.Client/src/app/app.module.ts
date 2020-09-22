@@ -1,19 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthService } from './services/auth.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CreatepostComponent } from './createpost/createpost.component';
-import { CatService } from './services/cat.service';
-import { AuthGuardService } from './services/auth-guard.service';
-import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CatListComponent } from './cat-list/cat-list.component';
 import { CatDetailsComponent } from './cat-details/cat-details.component';
+import { CreatepostComponent } from './createpost/createpost.component';
+import { CatService } from './services/applicationServices/cat.service';
+import { AuthService } from './services/authenticationServices/auth.service';
+import { AuthGuardService } from './services/authenticationServices/auth-guard.service';
+import { TokenInterceptorService } from './services/interceptorServices/token-interceptor.service';
+import { ErrorInterceptorService } from './services/interceptorServices/error-interceptor.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { CatDetailsComponent } from './cat-details/cat-details.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthService,
@@ -37,6 +44,11 @@ import { CatDetailsComponent } from './cat-details/cat-details.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true
     }
   ],

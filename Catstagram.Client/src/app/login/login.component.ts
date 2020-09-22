@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/authenticationServices/auth.service';
 
 
 @Component({
@@ -19,6 +19,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(["cats"])
+    }
   }
 
   login(){

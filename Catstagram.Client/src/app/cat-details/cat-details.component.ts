@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CatDetails } from '../models/CatDetails';
 import { CatUpdate } from '../models/CatUpdate';
-import { CatService } from '../services/cat.service';
+import { CatService } from '../services/applicationServices/cat.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/authenticationServices/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +19,10 @@ export class RegisterComponent implements OnInit {
     })
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(["cats"])
+    }
   }
 
   register(){

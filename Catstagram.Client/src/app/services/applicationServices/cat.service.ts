@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Cat } from '../models/Cat';
-import { AuthService } from './auth.service';
-import { CatDetails } from '../models/CatDetails';
-import { CatUpdate } from '../models/CatUpdate';
+import { Cat } from '../../models/Cat';
+import { AuthService } from '../authenticationServices/auth.service';
+import { CatDetails } from '../../models/CatDetails';
+import { CatUpdate } from '../../models/CatUpdate';
 
 
 @Injectable({

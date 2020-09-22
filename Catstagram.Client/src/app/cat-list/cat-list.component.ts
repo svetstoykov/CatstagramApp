@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cat } from '../models/Cat';
-import { CatService } from '../services/cat.service';
+import { CatService } from '../services/applicationServices/cat.service';
 
 @Component({
   selector: 'app-list-cats',
