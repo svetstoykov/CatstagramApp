@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { ListCatsComponent } from './list-cats/list-cats.component';
+import { CatListComponent } from './cat-list/cat-list.component';
 import { CatDetailsComponent } from './cat-details/cat-details.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'create', component: CreatepostComponent, canActivate: [AuthGuardService],},
-  { path: 'cats', component: ListCatsComponent, canActivate: [AuthGuardService],},
+  { path: 'cats', component: CatListComponent, canActivate: [AuthGuardService],},
   { path: 'cats/:id', component: CatDetailsComponent, canActivate: [AuthGuardService],},
 ];
 

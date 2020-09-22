@@ -5,10 +5,10 @@ import { CatService } from '../services/cat.service';
 
 @Component({
   selector: 'app-list-cats',
-  templateUrl: './list-cats.component.html',
-  styleUrls: ['./list-cats.component.css']
+  templateUrl: './cat-list.component.html',
+  styleUrls: ['./cat-list.component.css']
 })
-export class ListCatsComponent implements OnInit {
+export class CatListComponent implements OnInit {
 
   cats: Array<Cat>;
 
