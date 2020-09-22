@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Cat } from '../models/Cat';
 import { AuthService } from './auth.service';
 import { CatDetails } from '../models/CatDetails';
+import { CatUpdate } from '../models/CatUpdate';
+
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +29,9 @@ export class CatService {
 
   deleteCatById(id): Observable<Cat>{
     return this.http.delete<Cat>(`${this.catPath}/${id}`);
+  }
+
+  updateCat(data): Observable<CatUpdate>{
+    return this.http.put<CatUpdate>(`${this.catPath}`, data);
   }
 }

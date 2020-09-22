@@ -4,11 +4,21 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <div class="form-signin text-center">
-            <img class="card-img-top" [src]="cat.imageUrl" alt="Card image cap">
-            <div class="card-body text-center" style="font-style: normal;">
-              <p class="card-text">{{cat.description}}</p>
+            <img class="card-img-top" src={{cat.imageUrl}} alt="Card image cap">
+            <label style="font-size: 22px; text-decoration: underline;" class="mt-3">Description</label>
+            <div class="card-body text-center p-1" style="font-style: normal;" *ngIf="!descriptionEditable; else editBlock">
+              <p class="card-text mx-auto">{{cat.description}}</p>
+              <a (click)="editDescription()" class="btn btn-lg btn-info btn-block text-uppercase">Edit</a>
               <a (click)="deleteCat()" class="btn btn-lg btn-danger btn-block text-uppercase">Delete</a>
             </div>
+            <ng-template #editBlock>
+              <form class="card-body text-center" style="font-style: normal;" [formGroup]="catUpdateForm" (ngSubmit)="updateCat()">
+                <textarea class="form-control mb-2" formControlName="description"></textarea>
+                <button type="submit" class="btn btn-lg btn-info btn-block text-uppercase">Update</button>
+                <a (click)="deleteCat()" class="btn btn-lg btn-danger btn-block text-uppercase">Delete</a>
+              </form>
+            </ng-template>
+            <label style="font-size: 18px;" class="mt-3">Owner: {{cat.username}}</label>
           </div>
         </div>
       </div>
