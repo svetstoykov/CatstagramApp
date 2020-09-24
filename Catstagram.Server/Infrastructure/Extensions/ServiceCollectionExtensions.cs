@@ -5,6 +5,7 @@ using Catstagram.Server.Data.Models;
 using Catstagram.Server.Features.Cats;
 using Catstagram.Server.Features.Identity;
 using Catstagram.Server.Infrastructure.Filters;
+using Catstagram.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -71,6 +72,7 @@ namespace Catstagram.Server.Infrastructure.Extensions
         {
             return services
                 .AddTransient<IIdentityService, IdentityService>()
+                .AddScoped<ICurrentUserService, CurrentUserService>()
                 .AddTransient<ICatService, CatService>();
         }
 

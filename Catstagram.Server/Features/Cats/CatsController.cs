@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Catstagram.Server.Features.Cats.Models;
 using Catstagram.Server.Infrastructure.Extensions;
+using Catstagram.Server.Infrastructure.Services;
 using static Catstagram.Server.Infrastructure.WebConstants;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,16 +15,18 @@ namespace Catstagram.Server.Features.Cats
     public class CatsController : ApiController
     {
         private readonly ICatService _catService;
+        private readonly ICurrentUserService _currentUserService;
 
-        public CatsController(ICatService catService)
+        public CatsController(ICatService catService, ICurrentUserService currentUserService)
         {
             this._catService = catService;
+            this._currentUserService = currentUserService;
         }
 
         [HttpGet]
         public async Task<IEnumerable<CatListServiceModel>> Mine()
         {
-            var userId = this.GetUserId();
+            var userId = this._currentUserService.GetId();
 
             return await this._catService.ByUser(userId);
         }
@@ -36,7 +41,7 @@ namespace Catstagram.Server.Features.Cats
         [HttpPost]
         public async Task<ActionResult> Create(CreateCatRequestModel model)
         {
-            var userId = this.GetUserId();
+            var userId = this._currentUserService.GetId();
 
             var catId = await this._catService.Create(model, userId);
 
@@ -46,7 +51,7 @@ namespace Catstagram.Server.Features.Cats
         [HttpPut]
         public async Task<ActionResult> Update(UpdateCatRequestModel model)
         {
-            var userId = this.GetUserId();
+            var userId = this._currentUserService.GetId();
 
             var result = await this._catService.Update(model, userId);
 
@@ -62,7 +67,7 @@ namespace Catstagram.Server.Features.Cats
         [Route(IdForRoute)]
         public async Task<ActionResult> Delete(int id)
         {
-            var userId = this.GetUserId();
+            var userId = this._currentUserService.GetId();
 
             var isDeleted = await this._catService.Delete(id, userId);
 
@@ -73,9 +78,6 @@ namespace Catstagram.Server.Features.Cats
 
             return Ok();
         }
-
-        private string GetUserId()
-            => this.User.GetId();
 
     }
 
