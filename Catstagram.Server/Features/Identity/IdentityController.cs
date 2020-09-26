@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Catstagram.Server.Data.Models;
 using Catstagram.Server.Features.Identity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -20,6 +21,7 @@ namespace Catstagram.Server.Features.Identity
             this._identityService = identityService;
             this._applicationSettings = applicationSettings.Value;
         }
+
 
 
         [HttpPost]

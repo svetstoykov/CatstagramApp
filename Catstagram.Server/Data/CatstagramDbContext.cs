@@ -46,6 +46,10 @@ namespace Catstagram.Server.Data
                 .HasForeignKey(c => c.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder
+                .Entity<User>()
+                .OwnsOne(u => u.Profile);
+
             base.OnModelCreating(builder);
         }
 

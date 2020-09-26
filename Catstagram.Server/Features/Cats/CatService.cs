@@ -74,6 +74,7 @@ namespace Catstagram.Server.Features.Cats
         {
             var catsForUser = await this._dbContext.Cats
                 .Where(c => c.UserId == userId)
+                .OrderByDescending(c => c.CreatedOn)
                 .Select(c => new CatListServiceModel
                 {
                     Id = c.Id,
