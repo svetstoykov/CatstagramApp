@@ -8,7 +8,6 @@ namespace Catstagram.Server.Infrastructure.Services
     {
         private readonly ClaimsPrincipal _user;
 
-
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
             this._user = httpContextAccessor.HttpContext?.User;

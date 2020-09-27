@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Catstagram.Server.Data;
 using Catstagram.Server.Data.Models;
 using Catstagram.Server.Features.Cats.Models;
+using Catstagram.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -38,13 +39,13 @@ namespace Catstagram.Server.Features.Cats
         }
 
 
-        public async Task<bool> Delete(int catId, string userId)
+        public async Task<Result> Delete(int catId, string userId)
         {
             var cat = await this.GetCatByIdAndUserId(catId, userId);
 
             if (cat == null)
             {
-                return false;
+                return "The cat does not exist or it does not belong to you.";
             }
 
             this._dbContext.Cats.Remove(cat);
@@ -54,13 +55,13 @@ namespace Catstagram.Server.Features.Cats
             return true;
         }
 
-        public async Task<bool> Update(UpdateCatRequestModel model, string userId)
+        public async Task<Result> Update(UpdateCatRequestModel model, string userId)
         {
             var cat = await this.GetCatByIdAndUserId(model.Id, userId);
 
             if (cat == null)
             {
-                return false;
+                return "The cat does not exist or it does not belong to you.";
             }
 
             cat.Description = model.Description;

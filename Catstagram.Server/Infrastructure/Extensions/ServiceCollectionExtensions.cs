@@ -4,6 +4,7 @@ using Catstagram.Server.Data;
 using Catstagram.Server.Data.Models;
 using Catstagram.Server.Features.Cats;
 using Catstagram.Server.Features.Identity;
+using Catstagram.Server.Features.Profiles;
 using Catstagram.Server.Infrastructure.Filters;
 using Catstagram.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -44,7 +45,7 @@ namespace Catstagram.Server.Infrastructure.Extensions
 
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, ApplicationSettings appSettings)
         {
-            
+
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services.AddAuthentication(x =>
@@ -71,8 +72,9 @@ namespace Catstagram.Server.Infrastructure.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             return services
-                .AddTransient<IIdentityService, IdentityService>()
                 .AddScoped<ICurrentUserService, CurrentUserService>()
+                .AddTransient<IIdentityService, IdentityService>()
+                .AddTransient<IProfileService, ProfileService>()
                 .AddTransient<ICatService, CatService>();
         }
 

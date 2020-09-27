@@ -55,9 +55,9 @@ namespace Catstagram.Server.Features.Cats
 
             var result = await this._catService.Update(model, userId);
 
-            if (!result)
+            if (!result.Succeeded)
             {
-                return BadRequest();
+                return BadRequest(result.Error);
             }
 
             return Ok();
@@ -69,11 +69,11 @@ namespace Catstagram.Server.Features.Cats
         {
             var userId = this._currentUserService.GetId();
 
-            var isDeleted = await this._catService.Delete(id, userId);
+            var result = await this._catService.Delete(id, userId);
 
-            if (!isDeleted)
+            if (!result.Succeeded)
             {
-                return BadRequest();
+                return BadRequest(result.Error);
             }
 
             return Ok();

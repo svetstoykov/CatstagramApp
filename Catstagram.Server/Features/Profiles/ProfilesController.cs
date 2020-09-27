@@ -1,49 +1,46 @@
 ﻿using System.Threading.Tasks;
-using Catstagram.Server.Data;
-using Catstagram.Server.Data.Models;
-using Catstagram.Server.Features.Identity.Models;
+using Catstagram.Server.Features.Profiles.Models;
+using Catstagram.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Catstagram.Server.Features.Profiles
 {
     [Authorize]
     public class ProfilesController : ApiController
     {
-        private readonly CatstagramDbContext _dbContext;
-        private readonly UserManager<User> _userManager;
+        private readonly IProfileService _profileService;
+        private readonly ICurrentUserService _currentUserService;
 
-        public ProfilesController(CatstagramDbContext dbContext)
+        public ProfilesController(IProfileService profileService, ICurrentUserService currentUserService)
         {
-            this._dbContext = dbContext;
+            this._profileService = profileService;
+            this._currentUserService = currentUserService;
         }
 
 
         [HttpGet]
         public async Task<ActionResult<ProfileResponseModel>> GetUserDetails(string id)
         {
-            var user = await this._dbContext.Users
-                .FirstOrDefaultAsync(u => u.Id == id);
+            var userDetails = await this._profileService
+                .GetUserDetails(this._currentUserService.GetId());
 
-            if (user == null)
+            return userDetails;
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(UpdateProfileRequestModel model)
+        {
+            var userId = this._currentUserService.GetId();
+
+            var result = await this._profileService.UpdateUserDetail(model, this._currentUserService.GetId());
+
+            if (!result.Succeeded)
             {
-                return BadRequest();
+                return BadRequest(result.Error);
             }
 
-            var userDetail = new ProfileResponseModel
-            {
-                Name = user.Profile.Name,
-                Biography = user.Profile.Biography,
-                Gender = user.Profile.Gender,
-                IsPrivateProfile = user.Profile.IsPrivateProfile,
-                ProfilePhotoUrl = user.Profile.ProfilePhotoUrl,
-                Username = user.UserName,
-                Website = user.Profile.Website
-            };
-
-            return userDetail;
+            return Ok();
         }
 
     }
