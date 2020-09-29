@@ -20,10 +20,12 @@ namespace Catstagram.Server.Features.Profiles
 
 
         [HttpGet]
-        public async Task<ActionResult<ProfileResponseModel>> GetUserDetails(string id)
+        public async Task<ActionResult<ProfileResponseModel>> GetUserDetails()
         {
+            var userId = this._currentUserService.GetId();
+
             var userDetails = await this._profileService
-                .GetUserDetails(this._currentUserService.GetId());
+                .GetUserDetails(userId);
 
             return userDetails;
         }
@@ -33,7 +35,7 @@ namespace Catstagram.Server.Features.Profiles
         {
             var userId = this._currentUserService.GetId();
 
-            var result = await this._profileService.UpdateUserDetail(model, this._currentUserService.GetId());
+            var result = await this._profileService.UpdateUserDetail(model, userId);
 
             if (!result.Succeeded)
             {

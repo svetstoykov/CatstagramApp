@@ -1,10 +1,11 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 using Catstagram.Server.Data;
 using Catstagram.Server.Data.Models;
 using Catstagram.Server.Features.Cats;
+using Catstagram.Server.Features.Follows;
 using Catstagram.Server.Features.Identity;
 using Catstagram.Server.Features.Profiles;
+using Catstagram.Server.Features.Search;
 using Catstagram.Server.Infrastructure.Filters;
 using Catstagram.Server.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -75,7 +76,9 @@ namespace Catstagram.Server.Infrastructure.Extensions
                 .AddScoped<ICurrentUserService, CurrentUserService>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IProfileService, ProfileService>()
-                .AddTransient<ICatService, CatService>();
+                .AddTransient<ICatService, CatService>()
+                .AddTransient<IFollowsService, FollowsService>()
+                .AddTransient<ISearchService, SearchService>();
         }
 
         public static ApplicationSettings GetAppSettings(this IServiceCollection services, IConfiguration config)
