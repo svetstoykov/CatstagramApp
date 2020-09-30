@@ -31,7 +31,7 @@ namespace Catstagram.Server.Features.Follows
                 .Select(u => !u.Profile.IsPrivateProfile)
                 .FirstOrDefaultAsync();
 
-            this._dbContext.Follows.Add(new Follow
+            await this._dbContext.Follows.AddAsync(new Follow
             {
                 UserId = userId,
                 FollowerId = followerId,
@@ -41,6 +41,16 @@ namespace Catstagram.Server.Features.Follows
             await this._dbContext.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<bool> IsFollower(string userId, string followerId)
+        {
+            var isFollowed = await this._dbContext.Follows
+                .AnyAsync(f => f.UserId == userId && 
+                               f.FollowerId == followerId && 
+                               f.IsApproved);
+
+            return isFollowed;
         }
     }
 }

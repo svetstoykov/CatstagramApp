@@ -17,26 +17,37 @@ namespace Catstagram.Server.Features.Profiles
             this._dbContext = dbContext;
         }
 
-        public async Task<ProfileResponseModel> GetUserDetails(string userId)
+        public async Task<ProfileServiceModel> GetUserDetails
+            (string userId, bool isPublic = false)
         {
-            var user = await this._dbContext.Users
-                .Where(u => u.Id == userId)
-                .Select(u => new ProfileResponseModel
+            var query = this._dbContext.Users.Where(u => u.Id == userId);
+
+            if (isPublic)
+            {
+                return await query.Select(u => new PublicProfileServiceModel
+                    {
+                        Name = u.Profile.Name,
+                        Biography = u.Profile.Biography,
+                        Gender = u.Profile.Gender.ToString(),
+                        IsPrivateProfile = u.Profile.IsPrivateProfile,
+                        ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
+                        Username = u.UserName,
+                        Website = u.Profile.Website
+                    })
+                    .FirstOrDefaultAsync();
+            }
+
+            return await query.Select(u => new ProfileServiceModel 
                 {
                     Name = u.Profile.Name,
-                    Biography = u.Profile.Biography,
-                    Gender = u.Profile.Gender.ToString(),
-                    IsPrivateProfile = u.Profile.IsPrivateProfile,
-                    ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
                     Username = u.UserName,
-                    Website = u.Profile.Website
+                    IsPrivateProfile = u.Profile.IsPrivateProfile,
+                    ProfilePhotoUrl = u.Profile.ProfilePhotoUrl
                 })
                 .FirstOrDefaultAsync();
-
-            return user;
         }
 
-        public async Task<Result> UpdateUserDetail(UpdateProfileRequestModel updateModel, string userId)
+        public async Task<Result> UpdateUserDetails(UpdateProfileRequestModel updateModel, string userId)
         {
             var user = await this._dbContext.Users
                 .Where(u => u.Id == userId)
@@ -69,6 +80,16 @@ namespace Catstagram.Server.Features.Profiles
             await this._dbContext.SaveChangesAsync();
 
             return true;
+        }
+
+        public async Task<bool> IsPublic(string userId)
+        {
+            var isPublic = await this._dbContext.Users
+                .Where(u => u.Id == userId)
+                .Select(u => !u.Profile.IsPrivateProfile)
+                .FirstOrDefaultAsync();
+
+            return isPublic;
         }
 
         private static void UpdateRemainingProperties(UpdateProfileRequestModel updateModel, User user)

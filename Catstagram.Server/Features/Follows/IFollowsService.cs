@@ -5,8 +5,8 @@ namespace Catstagram.Server.Features.Follows
 {
     public interface IFollowsService
     {
-
         Task<Result> Follow(string userId, string followerId);
 
+        Task<bool> IsFollower(string userId, string followerId);
     }
 }

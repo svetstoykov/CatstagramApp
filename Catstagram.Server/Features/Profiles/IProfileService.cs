@@ -6,8 +6,10 @@ namespace Catstagram.Server.Features.Profiles
 {
     public interface IProfileService
     {
-        Task<ProfileResponseModel> GetUserDetails(string userId);
+        Task<ProfileServiceModel> GetUserDetails(string userId, bool isPublic = false);
 
-        Task<Result> UpdateUserDetail(UpdateProfileRequestModel model, string userId);
+        Task<Result> UpdateUserDetails(UpdateProfileRequestModel model, string userId);
+
+        Task<bool> IsPublic(string userId);
     }
 }
