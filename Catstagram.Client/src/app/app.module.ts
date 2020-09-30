@@ -18,6 +18,7 @@ import { AuthGuardService } from './services/authenticationServices/auth-guard.s
 import { TokenInterceptorService } from './services/interceptorServices/token-interceptor.service';
 import { ErrorInterceptorService } from './services/interceptorServices/error-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     CreatepostComponent,
     CatListComponent,
     CatDetailsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
