@@ -19,6 +19,7 @@ import { TokenInterceptorService } from './services/interceptorServices/token-in
 import { ErrorInterceptorService } from './services/interceptorServices/error-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { HeaderComponent } from './header/header.component';
     CatListComponent,
     CatDetailsComponent,
     HeaderComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Catstagram.Server.Features.Search.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using static Catstagram.Server.Infrastructure.WebConstants;
 
 namespace Catstagram.Server.Features.Search
 {
@@ -17,7 +18,7 @@ namespace Catstagram.Server.Features.Search
 
         [HttpGet]
         [AllowAnonymous]
-        [Route(nameof(Profiles))]
+        [Route(QueryRoute)]
         public async Task<IEnumerable<ProfileSearchServiceModel>> Profiles(string query)
         {
             var result = await this._searchService.Profiles(query);

@@ -29,8 +29,7 @@ export class RegisterComponent implements OnInit {
     this.authService
       .register(this.registerForm.value)
       .subscribe(data => {
-        this.authService.saveToken(data["token"]);
-        this.router.navigate(["cats"])
+        this.router.navigate(['login'],{queryParams: { registered: 'true' } });
       })
   }
 

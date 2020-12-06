@@ -6,11 +6,13 @@ import { CreatepostComponent } from './createpost/createpost.component';
 import { AuthGuardService } from './services/authenticationServices/auth-guard.service';
 import { CatListComponent } from './cat-list/cat-list.component';
 import { CatDetailsComponent } from './cat-details/cat-details.component';
+import { SearchComponent } from './search/search.component'
 
 const routes: Routes = [
   { path: '', redirectTo: "/cats", pathMatch: "full"},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'search', component: SearchComponent},
   { path: 'create', component: CreatepostComponent, canActivate: [AuthGuardService],},
   { path: 'cats', component: CatListComponent, canActivate: [AuthGuardService],},
   { path: 'cats/:id', component: CatDetailsComponent, canActivate: [AuthGuardService],},

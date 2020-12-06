@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from '@angular/router';
-import { AuthService } from '../services/authenticationServices/auth.service';
+import { Router,ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from '../services/authenticationServices/auth.service';  
 
 
 @Component({
@@ -11,7 +11,8 @@ import { AuthService } from '../services/authenticationServices/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  infoMessage = "";
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private route:ActivatedRoute) {
     this.loginForm = this.fb.group({
       "username": ["", [Validators.required]],
       "password": ["", [Validators.required]]
@@ -22,6 +23,13 @@ export class LoginComponent implements OnInit {
     if(this.authService.isAuthenticated()){
       this.router.navigate(["cats"])
     }
+
+    this.route.queryParams
+      .subscribe(params => {
+        if(params.registered !== undefined && params.registered === 'true') {
+            this.infoMessage = 'Registration Successful! Please Login!';
+        }
+      });
   }
 
   login(){

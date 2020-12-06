@@ -29,6 +29,16 @@ namespace Catstagram.Server.Features.Search
                 })
                 .ToListAsync();
 
+            var picture = await this._dbContext.Users
+                .Where(u => u.UserName.ToLower().Contains(query.ToLower()) ||
+                            u.Profile.Name.ToLower().Contains(query.ToLower()))
+                .Select(u => new 
+                {
+                    Picture = u.Profile.ProfilePhotoUrl
+                })
+                .ToListAsync();
+
+
             return searchResult;
         }
     }

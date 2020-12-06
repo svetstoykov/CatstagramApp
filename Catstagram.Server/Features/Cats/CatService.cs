@@ -31,7 +31,7 @@ namespace Catstagram.Server.Features.Cats
                 UserId = userId
             };
 
-            this._dbContext.Add(cat);
+            this._dbContext.Cats.Add(cat);
 
             await this._dbContext.SaveChangesAsync();
 
