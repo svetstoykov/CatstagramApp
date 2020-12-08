@@ -13,6 +13,7 @@ import { CatListComponent } from './cat-list/cat-list.component';
 import { CatDetailsComponent } from './cat-details/cat-details.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { CatService } from './services/applicationServices/cat.service';
+import { SearchService } from './services/applicationServices/search.service';
 import { AuthService } from './services/authenticationServices/auth.service';
 import { AuthGuardService } from './services/authenticationServices/auth-guard.service';
 import { TokenInterceptorService } from './services/interceptorServices/token-interceptor.service';
@@ -20,6 +21,7 @@ import { ErrorInterceptorService } from './services/interceptorServices/error-in
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { SearchComponent } from './search/search.component';
     CatDetailsComponent,
     HeaderComponent,
     SearchComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { SearchComponent } from './search/search.component';
   ],
   providers: [
     AuthService,
-    CatService, 
+    CatService,
+    SearchService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,

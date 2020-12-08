@@ -32,18 +32,21 @@ namespace Catstagram.Server.Features.Profiles
                         IsPrivateProfile = u.Profile.IsPrivateProfile,
                         ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
                         Username = u.UserName,
-                        Website = u.Profile.Website
-                    })
+                        CatPictures = u.Cats.Select(c => c.ImageUrl).ToList()
+                })
                     .FirstOrDefaultAsync();
             }
 
+
             return await query.Select(u => new ProfileServiceModel 
                 {
-                    Name = u.Profile.Name,
-                    Username = u.UserName,
-                    IsPrivateProfile = u.Profile.IsPrivateProfile,
-                    ProfilePhotoUrl = u.Profile.ProfilePhotoUrl
-                })
+                Name = u.Profile.Name,
+                Biography = u.Profile.Biography,
+                Gender = u.Profile.Gender.ToString(),
+                IsPrivateProfile = u.Profile.IsPrivateProfile,
+                ProfilePhotoUrl = u.Profile.ProfilePhotoUrl,
+                Username = u.UserName,
+            })
                 .FirstOrDefaultAsync();
         }
 

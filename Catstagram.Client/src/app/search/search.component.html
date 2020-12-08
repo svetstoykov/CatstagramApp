@@ -1,0 +1,30 @@
+<div class="container">
+    <form [formGroup]="searchForm" (ngSubmit)="getSearchResults()" id="searchForm">
+        <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+                <i class="fas fa-search h4 text-body"></i>
+            </div>
+            <!--end of col-->
+            <div class="col">
+                <input formControlName="username" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search username">
+            </div>
+            <!--end of col-->
+            <div class="col-auto">
+                <button class="btn btn-lg btn-success" type="submit">Search</button>
+            </div>
+            <!--end of col-->
+        </div>
+    </form>
+
+    <ul class="list-group list-group-flush" *ngFor="let user of searchResults">
+        <a class="list-group-item d-flex justify-content-between align-items-center">
+            {{user.username}}
+            <div class="image-parent">
+                <img [src]="user.profilePhotoUrl" class="img-fluid" alt="quixote">
+            </div>
+        </a>
+    </ul>
+</div>
+
+
+

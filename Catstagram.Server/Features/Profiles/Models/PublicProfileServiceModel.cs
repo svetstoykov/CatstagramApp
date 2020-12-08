@@ -1,11 +1,9 @@
-﻿namespace Catstagram.Server.Features.Profiles.Models
+﻿using System.Collections.Generic;
+
+namespace Catstagram.Server.Features.Profiles.Models
 {
     public class PublicProfileServiceModel : ProfileServiceModel
     {
-        public string Website { get; set; }
-
-        public string Biography { get; set; }
-
-        public string Gender { get; set; }
+        public List<string> CatPictures { get; set; }
     }
 }

@@ -10,13 +10,13 @@ using static Catstagram.Server.Infrastructure.WebConstants;
 namespace Catstagram.Server.Features.Profiles
 {
     [Authorize]
-    public class ProfilesController : ApiController
+    public class ProfileController : ApiController
     {
         private readonly IProfileService _profileService;
         private readonly ICurrentUserService _currentUserService;
         private readonly IFollowsService _followsService;
 
-        public ProfilesController(IProfileService profileService, ICurrentUserService currentUserService, IFollowsService followsService)
+        public ProfileController(IProfileService profileService, ICurrentUserService currentUserService, IFollowsService followsService)
         {
             this._profileService = profileService;
             this._currentUserService = currentUserService;
